@@ -1,7 +1,7 @@
 import cv2
 import pandas as pd
 from PIL import Image
-
+from datetime import datetime
 import os
 
 def process_directory(input_dir, output_excel):
@@ -46,5 +46,13 @@ def select_directory():
 
     return main_directory
 
-directory = select_directory()
-process_directory(directory, 'sizes.xlsx')
+if __name__ == '__main__':
+    start_time = datetime.now()
+    output_excel = 'sizes.xlsx'
+
+    directory = select_directory()
+    process_directory(directory, output_excel)
+
+    end_time = datetime.now()
+    execution_time = end_time - start_time
+    print(f"Время выполнения скрипта: {execution_time}")
